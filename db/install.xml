@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/assignnodraft/db" VERSION="20260713" COMMENT="Persisted enforcement scopes for local_assignnodraft."
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_assignnodraft_scope" COMMENT="Scopes where assignment draft mode is enforced off.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="scopetype" TYPE="char" LENGTH="20" NOTNULL="true" COMMENT="category or course"/>
+        <FIELD NAME="instanceid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="category id or course id"/>
+        <FIELD NAME="includesubcats" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" COMMENT="1 = include descendant categories (category scope only)"/>
+        <FIELD NAME="promote" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1" COMMENT="1 = drafts were promoted on apply"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="scopetype_instanceid" UNIQUE="true" FIELDS="scopetype, instanceid"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>
